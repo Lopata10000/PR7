@@ -1,35 +1,35 @@
 package com.fanta.services;
 
-import com.fanta.dao.DoctorDao;
-import com.fanta.entity.DoctorEntity;
+import com.fanta.dao.PerformanceDao;
+import com.fanta.entity.PerformanceEntity;
 
 import java.util.List;
 
-public final class DoctorService {
-    private static DoctorService doctorService = new DoctorService();
-    private DoctorService(){}
+public final class PerformanceService {
+    private static PerformanceService performanceService = new PerformanceService();
+    private PerformanceService(){}
 
-    public static DoctorService getInstance(){
-        return doctorService;
+    public static PerformanceService getInstance() {
+        return performanceService;
     }
 
-    public void addNewDoctor(DoctorEntity doctorEntity) {
-        DoctorDao.getInstance().saveNewEntity(doctorEntity);
+    public void addNewPerformance(PerformanceEntity performanceEntity) {
+        PerformanceDao.getInstance().saveNewEntity(performanceEntity);
     }
 
-    public void updateDoctorById(int id, DoctorEntity doctorEntity){
-        DoctorDao.getInstance().updateEntityById(id, doctorEntity);
+    public void updatePerformanceById(int id, PerformanceEntity performanceEntity){
+        PerformanceDao.getInstance().updateEntityById(id, performanceEntity);
     }
 
-    public void deleteDoctorById(int id){
-        DoctorDao.getInstance().deleteEntity(id);
+    public void deletePerformanceById(int id){
+        PerformanceDao.getInstance().deleteEntity(id);
     }
 
-    public DoctorEntity getDoctorById(int id){
-        return DoctorDao.getInstance().findById(id);
+    public PerformanceEntity getPerformanceById(int id){
+        return PerformanceDao.getInstance().findById(id);
     }
 
-    public List<DoctorEntity> getAllDoctors(){
-        return DoctorDao.getInstance().findAll();
+    public List<PerformanceEntity> getAllPerformances(){
+        return PerformanceDao.getInstance().findAll();
     }
 }

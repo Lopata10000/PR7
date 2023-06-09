@@ -1,54 +1,55 @@
 package com.fanta.dao;
 
+import com.fanta.entity.PlayEntity;
 import com.fanta.entity.Entity;
-import com.fanta.entity.ServiceEntity;
 import com.fanta.exception.DaoException;
 import com.fanta.utils.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceDao implements Dao{
+public class PlayDao implements Dao {
 
-    private static ServiceDao serviceDao = new ServiceDao();
+    private static PlayDao playDao = new PlayDao();
 
-    private ServiceDao(){}
+    private PlayDao(){}
 
-    public static ServiceDao getInstance() {
-        return serviceDao;
+    public static PlayDao getInstance() {
+        return playDao;
     }
 
     @Override
     public void saveNewEntity(Entity entity) {
-        ServiceEntity serviceEntity = (ServiceEntity) entity;
-        String sqlSave = "INSERT INTO SERVICES (name, description, price) VALUES ( ?, ?, ? )";
+        PlayEntity playEntity = (PlayEntity) entity;
+        String sqlSave = "INSERT INTO Plays (Title, Author, Year_Written) VALUES (?, ?, ?)";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlSave)){
-            statement.setString(1, serviceEntity.getName());
-            statement.setString(2, serviceEntity.getDescription());
-            statement.setDouble(3, serviceEntity.getPrice());
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlSave)){
+            statement.setString(1, playEntity.getTitle());
+            statement.setString(2, playEntity.getAuthor());
+            statement.setInt(3, playEntity.getYearWritten());
 
             statement.executeUpdate();
 
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
     }
 
     @Override
     public void updateEntityById(int id, Entity entity) {
-        ServiceEntity serviceEntity = (ServiceEntity) entity;
-        String sqlUpdate = "UPDATE SERVICES SET NAME = ?, DESCRIPTION = ?, PRICE = ? WHERE SERVICE_ID = ?";
+        PlayEntity playEntity = (PlayEntity) entity;
+        String sqlUpdate = "UPDATE Plays SET Title = ?, Author = ?, Year_Written = ? WHERE Id = ?";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlUpdate)){
-            statement.setString(1, serviceEntity.getName());
-            statement.setString(2, serviceEntity.getDescription());
-            statement.setDouble(3, serviceEntity.getPrice());
-
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlUpdate)){
+            statement.setString(1, playEntity.getTitle());
+            statement.setString(2, playEntity.getAuthor());
+            statement.setInt(3, playEntity.getYearWritten());
             statement.setInt(4, id);
 
             statement.executeUpdate();
@@ -56,13 +57,13 @@ public class ServiceDao implements Dao{
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
     }
 
     @Override
     public void deleteEntity(int id) {
-        String sqlDelete = "DELETE FROM SERVICES WHERE SERVICE_ID = ?";
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlDelete)){
+        String sqlDelete = "DELETE FROM Plays WHERE Id = ?";
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlDelete)){
             statement.setInt(1, id);
             statement.executeUpdate();
 
@@ -72,20 +73,21 @@ public class ServiceDao implements Dao{
     }
 
     @Override
-    public ServiceEntity findById(int id) {
-        String sqlFindById = "SELECT SERVICE_ID, NAME, DESCRIPTION, PRICE FROM SERVICES WHERE SERVICE_ID = ?";
+    public PlayEntity findById(int id) {
+        String sqlFindById = "SELECT Id, Title, Author, Year_Written FROM Plays WHERE Id = ?";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlFindById)){
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlFindById)){
             statement.setInt(1, id);
-            var data = statement.executeQuery();
+            ResultSet data = statement.executeQuery();
 
             if(data.next()){
-                return ServiceEntity
+                return PlayEntity
                         .builder()
-                        .serviceId(data.getInt("service_id"))
-                        .name(data.getString("name"))
-                        .description(data.getString("description"))
-                        .price(data.getDouble("price"))
+                        .id(data.getInt("Id"))
+                        .title(data.getString("Title"))
+                        .author(data.getString("Author"))
+                        .yearWritten(data.getInt("Year_Written"))
                         .build();
             } else {
                 return null;
@@ -97,25 +99,26 @@ public class ServiceDao implements Dao{
     }
 
     @Override
-    public List<ServiceEntity> findAll() {
-        String sqlFindAll = "SELECT SERVICE_ID, NAME, DESCRIPTION, PRICE FROM SERVICES";
-        List<ServiceEntity> serviceEntities = new ArrayList<>();
+    public List<PlayEntity> findAll() {
+        String sqlFindAll = "SELECT Id, Title, Author, Year_Written FROM Plays";
+        List<PlayEntity> playEntities = new ArrayList<>();
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlFindAll)){
-            var data = statement.executeQuery();
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlFindAll)){
+            ResultSet data = statement.executeQuery();
 
             while (data.next()){
-                serviceEntities.add(ServiceEntity
+                playEntities.add(PlayEntity
                         .builder()
-                        .serviceId(data.getInt("service_id"))
-                        .name(data.getString("name"))
-                        .description(data.getString("description"))
-                        .price(data.getDouble("price"))
+                        .id(data.getInt("Id"))
+                        .title(data.getString("Title"))
+                        .author(data.getString("Author"))
+                        .yearWritten(data.getInt("Year_Written"))
                         .build()
                 );
             }
 
-            return serviceEntities;
+            return playEntities;
 
         } catch (SQLException e) {
             throw new DaoException(e);

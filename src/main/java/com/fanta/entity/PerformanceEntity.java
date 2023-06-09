@@ -1,5 +1,6 @@
 package com.fanta.entity;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,11 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DoctorEntity implements Entity {
-    private int doctorId;
-    private String name;
-    private String surname;
-    private String phoneNumber;
-    private String email;
-    private String speciality;
+public class PerformanceEntity implements Entity {
+    private int id;
+    private LocalDateTime dateTime;
+    private PlayEntity play;
 }

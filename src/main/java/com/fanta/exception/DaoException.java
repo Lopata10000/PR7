@@ -1,4 +1,4 @@
-package org.krupanych.exception;
+package com.fanta.exception;
 
 public class DaoException extends RuntimeException{
 

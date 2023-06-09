@@ -1,7 +1,5 @@
 package com.fanta.entity;
 
-import com.fanta.entity.Entity;
-
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

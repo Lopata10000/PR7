@@ -1,15 +1,24 @@
-package main.java.org.krupanych;
+package com.fanta;
 
 
-import org.krupanych.entity.AppointmentEntity;
-import org.krupanych.services.AppointmentService;
+import com.fanta.entity.ActorEntity;
+import com.fanta.services.ActorService;
+
+import java.time.LocalDate;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        AppointmentEntity appointmentEntity = AppointmentService.getInstance().getAppointmentById(1);
-        System.out.println(appointmentEntity);
+        ActorEntity newActor = ActorEntity.builder()
+                .firstName("Fanta")
+                .lastName("Petro")
+                .birthDate(LocalDate.of(1990, 5, 15))
+                .build();
 
+        ActorService.getInstance().addNewActor(newActor);
+        System.out.println(newActor);
+        ActorEntity selected = ActorService.getInstance().getActorById(2);
+        System.out.println(selected);
     }
 }

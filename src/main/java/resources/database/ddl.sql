@@ -7,22 +7,22 @@ CREATE TABLE Plays (
 
 CREATE TABLE Actors (
                         ID SERIAL PRIMARY KEY,
-                        FirstName VARCHAR(50),
-                        LastName VARCHAR(50),
-                        BirthDate DATE
+                        First_Name VARCHAR(50),
+                        Last_Name VARCHAR(50),
+                        Birth_Date DATE
 );
 
 CREATE TABLE Performances (
                               ID SERIAL PRIMARY KEY,
-                              PlayID INT,
-                              DateTime TIMESTAMP,
-                              FOREIGN KEY (PlayID) REFERENCES Plays(ID)
+                              Play_ID INT,
+                              Date_Time TIMESTAMP,
+                              FOREIGN KEY (Play_ID) REFERENCES Plays(ID)
 );
 
 CREATE TABLE Roles (
-                       ActorID INT,
-                       PerformanceID INT,
-                       RoleName VARCHAR(50),
-                       FOREIGN KEY (ActorID) REFERENCES Actors(ID),
-                       FOREIGN KEY (PerformanceID) REFERENCES Performances(ID)
+                       Actor_ID INT,
+                       Performance_ID INT,
+                       Role_Name VARCHAR(50),
+                       FOREIGN KEY (Actor_ID) REFERENCES Actors(ID),
+                       FOREIGN KEY (Performance_ID) REFERENCES Performances(ID)
 );

@@ -1,37 +1,37 @@
 package com.fanta.dao;
 
+import com.fanta.entity.PerformanceEntity;
 import com.fanta.entity.Entity;
-import com.fanta.entity.PatientEntity;
 import com.fanta.exception.DaoException;
 import com.fanta.utils.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientDao implements Dao{
+public class PerformanceDao implements Dao {
 
-    private static final PatientDao PATIENT_DAO = new PatientDao();
+    private static PerformanceDao performanceDao = new PerformanceDao();
 
-    private PatientDao(){}
+    private PerformanceDao(){}
 
-    public static PatientDao getInstance() {
-        return PATIENT_DAO;
+    public static PerformanceDao getInstance() {
+        return performanceDao;
     }
 
     @Override
     public void saveNewEntity(Entity entity) {
-        PatientEntity patientEntity = (PatientEntity) entity;
-        String sqlSave = "INSERT INTO patients (name, surname, phone_number, email, address) VALUES ( ?, ?, ?, ?, ? )";
+        PerformanceEntity performanceEntity = (PerformanceEntity) entity;
+        String sqlSave = "INSERT INTO Performances (Play_Id, Performance_Date) VALUES (?, ?)";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlSave)){
-            statement.setString(1, patientEntity.getName());
-            statement.setString(2, patientEntity.getSurname());
-            statement.setString(3, patientEntity.getPhoneNumber());
-            statement.setString(4, patientEntity.getEmail());
-            statement.setString(5, patientEntity.getAddress());
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlSave)){
+            statement.setInt(1, performanceEntity.getPlay().getId());
+            statement.setObject(2, performanceEntity.getDateTime());
 
             statement.executeUpdate();
 
@@ -42,16 +42,14 @@ public class PatientDao implements Dao{
 
     @Override
     public void updateEntityById(int id, Entity entity) {
-        PatientEntity patientEntity = (PatientEntity) entity;
-        String sqlUpdate = "UPDATE PATIENTS SET NAME = ?, SURNAME = ?, PHONE_NUMBER = ?, EMAIL = ?, ADDRESS = ? WHERE PATIENT_ID = ?";
+        PerformanceEntity performanceEntity = (PerformanceEntity) entity;
+        String sqlUpdate = "UPDATE Performances SET Play_Id = ?, Performance_Date = ? WHERE Id = ?";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlUpdate)){
-            statement.setString(1, patientEntity.getName());
-            statement.setString(2, patientEntity.getSurname());
-            statement.setString(3, patientEntity.getPhoneNumber());
-            statement.setString(4, patientEntity.getEmail());
-            statement.setString(5, patientEntity.getAddress());
-            statement.setInt(6, id);
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlUpdate)){
+            statement.setInt(1, performanceEntity.getPlay().getId());
+            statement.setObject(2, performanceEntity.getDateTime());
+            statement.setInt(3, id);
 
             statement.executeUpdate();
 
@@ -62,8 +60,9 @@ public class PatientDao implements Dao{
 
     @Override
     public void deleteEntity(int id) {
-        String sqlDelete = "DELETE FROM PATIENTS WHERE PATIENT_ID = ?";
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlDelete)){
+        String sqlDelete = "DELETE FROM Performances WHERE Id = ?";
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlDelete)){
             statement.setInt(1, id);
             statement.executeUpdate();
 
@@ -73,22 +72,20 @@ public class PatientDao implements Dao{
     }
 
     @Override
-    public PatientEntity findById(int id) {
-        String sqlFindById = "SELECT PATIENT_ID, NAME, SURNAME, PHONE_NUMBER, EMAIL, ADDRESS FROM PATIENTS WHERE PATIENT_ID = ?";
+    public PerformanceEntity findById(int id) {
+        String sqlFindById = "SELECT Id, Play_Id, Performance_Date FROM Performances WHERE Id = ?";
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlFindById)){
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlFindById)){
             statement.setInt(1, id);
-            var data = statement.executeQuery();
+            ResultSet data = statement.executeQuery();
 
             if(data.next()){
-                return PatientEntity
+                return PerformanceEntity
                         .builder()
-                        .patientId(data.getInt("patient_id"))
-                        .name(data.getString("name"))
-                        .surname(data.getString("surname"))
-                        .phoneNumber(data.getString("phone_number"))
-                        .email(data.getString("email"))
-                        .address(data.getString("address"))
+                        .id(data.getInt("Id"))
+                        .play( PlayDao.getInstance().findById( data.getInt("Play_Id") ) )
+                        .dateTime( data.getObject("Performance_Date", LocalDateTime.class) )
                         .build();
             } else {
                 return null;
@@ -97,31 +94,28 @@ public class PatientDao implements Dao{
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-
     }
 
     @Override
-    public List<PatientEntity> findAll() {
-        String sqlFindAll = "SELECT PATIENT_ID, NAME, SURNAME, PHONE_NUMBER, EMAIL, ADDRESS FROM PATIENTS";
-        List<PatientEntity> patientEntities = new ArrayList<>();
+    public List<PerformanceEntity> findAll() {
+        String sqlFindAll = "SELECT Id, Play_Id, Performance_Date FROM Performances";
+        List<PerformanceEntity> performanceEntities = new ArrayList<>();
 
-        try (Connection connection = DbUtil.getConnection(); PreparedStatement statement = connection.prepareStatement(sqlFindAll)){
-            var data = statement.executeQuery();
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlFindAll)){
+            ResultSet data = statement.executeQuery();
 
             while (data.next()){
-                patientEntities.add(PatientEntity
+                performanceEntities.add(PerformanceEntity
                         .builder()
-                        .patientId(data.getInt("patient_id"))
-                        .name(data.getString("name"))
-                        .surname(data.getString("surname"))
-                        .phoneNumber(data.getString("phone_number"))
-                        .email(data.getString("email"))
-                        .address(data.getString("address"))
+                        .id(data.getInt("Id"))
+                        .play( PlayDao.getInstance().findById( data.getInt("Play_Id") ) )
+                        .dateTime(data.getObject("Performance_Date", LocalDateTime.class))
                         .build()
                 );
             }
 
-            return patientEntities;
+            return performanceEntities;
 
         } catch (SQLException e) {
             throw new DaoException(e);

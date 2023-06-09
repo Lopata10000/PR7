@@ -4,11 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed5b7b39-08e9-4c05-ba83-1fad82a53e45" name="Changes" comment="" />
+    <list default="true" id="ed5b7b39-08e9-4c05-ba83-1fad82a53e45" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ActorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ActorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PerformanceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PerformanceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlayDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlayDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/RoleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ActorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ActorEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PerformanceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PerformanceEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlayEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlayEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/RoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/exception/DaoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/exception/DaoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/services/ActorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/services/ActorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/services/PerformanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/services/PerformanceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/services/PlayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/services/PlayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/services/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/services/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/utils/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/utils/DbUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/database/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/database/ddl.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QynLVMwigRSuhtWCdKBIXjUzFE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -20,9 +48,72 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/fanta/IdeaProjects/PR7/src/main/java/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "9d501fb2-7af1-495f-be09-853217d71cee"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fanta\IdeaProjects\PR7\src\main\java\resources" />
+      <recent name="C:\Users\fanta\IdeaProjects\PR7\src\main\java" />
+      <recent name="C:\Users\fanta\IdeaProjects\PR7\src\main\java\com\fanta" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fanta" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.fanta.App" />
+      <module name="PR7" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fanta.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.fanta.Main" />
+      <module name="PR7" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fanta.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ddl.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/java/com/fanta/database/ddl.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="9d501fb2-7af1-495f-be09-853217d71cee" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -31,8 +122,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686334633244</updated>
+      <workItem from="1686334634932" duration="6643000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

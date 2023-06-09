@@ -22,4 +22,15 @@ public final class PlayService {
     public void updatePlayById(int id, PlayEntity playEntity) {
         PlayDao.getInstance().updateEntityById(id, playEntity);
     }
+    public void deletePlayById(int id){
+        PlayDao.getInstance().deleteEntity(id);
+    }
+
+    public PlayEntity getPlayById(int id){
+        return PlayDao.getInstance().findById(id);
+    }
+
+    public List<PlayEntity> getAllPlays(){
+        return PlayDao.getInstance().findAll();
+    }
 }

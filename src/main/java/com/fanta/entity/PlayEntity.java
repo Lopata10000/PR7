@@ -1,21 +1,19 @@
 package com.fanta.entity;
 
-import java.time.LocalDateTime;
+import com.fanta.entity.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AppointmentEntity implements Entity{
-    private int appointmentId;
-    private LocalDateTime appointmentDate;
-    private PatientEntity patientEntity;
-    private DoctorEntity doctorEntity;
-    private ServiceEntity serviceEntity;
+public class PlayEntity implements Entity {
+    private int id;
+    private String title;
+    private String author;
+    private int yearWritten;
 }

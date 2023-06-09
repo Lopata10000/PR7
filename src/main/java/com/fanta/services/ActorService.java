@@ -1,35 +1,35 @@
 package com.fanta.services;
 
-import com.fanta.dao.AppointmentDao;
-import com.fanta.entity.AppointmentEntity;
+import com.fanta.dao.ActorDao;
+import com.fanta.entity.ActorEntity;
 
 import java.util.List;
 
-public final class ActorService  {
-    private static AppointmentService appointmentService = new AppointmentService();
-    private AppointmentService(){}
+public final class ActorService {
+    private static ActorService actorService = new ActorService();
+    private ActorService(){}
 
-    public static AppointmentService getInstance() {
-        return appointmentService;
+    public static ActorService getInstance() {
+        return actorService;
     }
 
-    public void addNewAppointment(AppointmentEntity appointmentEntity) {
-        AppointmentDao.getInstance().saveNewEntity(appointmentEntity);
+    public void addNewActor(ActorEntity actorEntity) {
+        ActorDao.getInstance().saveNewEntity(actorEntity);
     }
 
-    public void updateAppointmentById(int id, AppointmentEntity appointmentEntity){
-        AppointmentDao.getInstance().updateEntityById(id, appointmentEntity);
+    public void updateActorById(int id, ActorEntity actorEntity){
+        ActorDao.getInstance().updateEntityById(id, actorEntity);
     }
 
-    public void deleteAppointmentById(int id){
-        AppointmentDao.getInstance().deleteEntity(id);
+    public void deleteActorById(int id){
+        ActorDao.getInstance().deleteEntity(id);
     }
 
-    public AppointmentEntity getAppointmentById(int id){
-        return AppointmentDao.getInstance().findById(id);
+    public ActorEntity getActorById(int id){
+        return ActorDao.getInstance().findById(id);
     }
 
-    public List<AppointmentEntity> getAllAppointments(){
-        return AppointmentDao.getInstance().findAll();
+    public List<ActorEntity> getAllActors(){
+        return ActorDao.getInstance().findAll();
     }
 }

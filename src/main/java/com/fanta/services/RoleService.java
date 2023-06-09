@@ -1,36 +1,35 @@
 package com.fanta.services;
 
-import com.fanta.dao.PatientDao;
-import com.fanta.entity.PatientEntity;
+import com.fanta.dao.RoleDao;
+import com.fanta.entity.RoleEntity;
 
 import java.util.List;
 
-public final class PatientService {
+public final class RoleService {
+    private static RoleService roleService = new RoleService();
+    private RoleService(){}
 
-    private static PatientService patientService = new PatientService();
-    private PatientService(){}
-
-    public static PatientService getInstance() {
-        return patientService;
+    public static RoleService getInstance() {
+        return roleService;
     }
 
-    public void addNewPatient(PatientEntity patientEntity) {
-        PatientDao.getInstance().saveNewEntity(patientEntity);
+    public void addNewRole(RoleEntity roleEntity) {
+        RoleDao.getInstance().saveNewEntity(roleEntity);
     }
 
-    public void updatePatientById(int id, PatientEntity patientEntity){
-        PatientDao.getInstance().updateEntityById(id, patientEntity);
+    public void updateRoleById(int id, RoleEntity roleEntity){
+        RoleDao.getInstance().updateEntityById(id, roleEntity);
     }
 
-    public void deletePatientById(int id){
-        PatientDao.getInstance().deleteEntity(id);
+    public void deleteRoleById(int id){
+        RoleDao.getInstance().deleteEntity(id);
     }
 
-    public PatientEntity getPatientById(int id){
-        return PatientDao.getInstance().findById(id);
+    public RoleEntity getRoleById(int id){
+        return RoleDao.getInstance().findById(id);
     }
 
-    public List<PatientEntity> getAllPatient(){
-        return PatientDao.getInstance().findAll();
+    public List<RoleEntity> getAllRoles(){
+        return RoleDao.getInstance().findAll();
     }
 }

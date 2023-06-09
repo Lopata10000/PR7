@@ -1,4 +1,4 @@
-package com.fanta;
+package com.fanta.dao;
 
 import com.fanta.entity.Entity;
 
